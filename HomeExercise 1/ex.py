@@ -5,7 +5,7 @@ import itertools
 txts = []
 for file in glob.glob("txt/*.txt"):
     with open(file, "r") as doc:
-        corpus.append(doc.read())
+        txts.append(doc.read())
 
 txts.insert(0, "web development design")
 
