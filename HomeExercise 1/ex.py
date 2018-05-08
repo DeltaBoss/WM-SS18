@@ -13,10 +13,10 @@ from sklearn.feature_extraction.text import CountVectorizer
 import numpy as np
 
 vectorizer = CountVectorizer()
-termvectors = vectorizer.fit_transform(txts)
+term_vectors = vectorizer.fit_transform(txts)
 
 
-tdm = np.array(tdm.toarray())
+tdm = np.array(term_vectors.toarray())
 # 2.3) if it has to be term as i doc as j
 print tdm.transpose()
 
@@ -25,13 +25,13 @@ from sklearn.feature_extraction.text import TfidfTransformer
 
 transformer = TfidfTransformer(use_idf=False, smooth_idf=False)
 # for 3.1a)
-tf = transformer.fit_transform(tdm)
+tf = transformer.fit_transform(term_vectors.toarray())
 
 
 
 transformer = TfidfTransformer(use_idf=True, smooth_idf=False)
 # for 3.1b)
-tfidf = transformer.fit_transform(tdm)
+tfidf = transformer.fit_transform(term_vectors.toarray())
 
 from sklearn.metrics.pairwise import linear_kernel
 
