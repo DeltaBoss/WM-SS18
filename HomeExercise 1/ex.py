@@ -4,8 +4,23 @@ from sklearn.feature_extraction.text import CountVectorizer
 import numpy as np
 
 vectorizer = CountVectorizer()
-X = vectorizer.fit_transform(txts)
+termvectors = vectorizer.fit_transform(txts)
 
-# 2.3) term as i doc as j
-tdm = np.array(X.toarray()).transpose()
-print tdm
+
+tdm = np.array(X.toarray())
+# 2.3) if it has to be term as i doc as j
+print tdm.transpose()
+
+
+from sklearn.feature_extraction.text import TfidfTransformer
+
+transformer = TfidfTransformer(use_idf=False, smooth_idf=False)
+tfidf = transformer.fit_transform(tdm)
+
+# for 3.1a)
+#print tfidf.toarray()
+
+transformer = TfidfTransformer(use_idf=True, smooth_idf=False)
+tfidf = transformer.fit_transform(tdm)
+# for 3.1b)
+#print tfidf.toarray()
